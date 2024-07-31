@@ -2,7 +2,7 @@
 import { Staff, StaffDocument } from '../entities/staff.entity'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { CreateStaffDto } from '../dtos/create-staff.dto'
+import { RegisterStaffDto } from '../dtos/register.dto'
 import { Injectable, ConflictException } from '@nestjs/common'
 
 @Injectable()
@@ -15,8 +15,8 @@ export class StaffsRepository {
         return staff
     }
 
-    async create(createStaffDto: CreateStaffDto): Promise<StaffDocument> {
-        const staff: StaffDocument = await this.staffModel.create(createStaffDto)
+    async create(registerDto: RegisterStaffDto): Promise<StaffDocument> {
+        const staff: StaffDocument = await this.staffModel.create(registerDto)
         return staff
     }
 }

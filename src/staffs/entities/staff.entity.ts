@@ -13,12 +13,17 @@ export class Staff {
     @Prop({ type: SchemaTypes.String, required: true })
     name: string;
 
-    @Prop({ type: SchemaTypes.String, required: true, select: false })
+    @Prop({ type: SchemaTypes.String, required: true })
     password: string;
 }
 
 export const StaffSchema = SchemaFactory.createForClass(Staff);
 StaffSchema.set('toJSON', { transform: function(doc, data, options) {
+    data.id = data._id
+
     delete data.password
+    delete data.__v
+    delete data._id
+    
     return data
 } })
