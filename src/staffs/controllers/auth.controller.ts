@@ -1,9 +1,22 @@
-import { Controller, Post, Body, HttpCode, ConflictException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common'
+import {
+  Controller,
+  Post,
+  Body,
+  HttpCode,
+  ConflictException,
+  InternalServerErrorException,
+  UnauthorizedException,
+  UseGuards,
+  Get,
+  Request,
+  NotFoundException
+} from '@nestjs/common'
 import { AuthService } from '../services/auth.service'
 import { RegisterStaffDto } from '../dtos/register.dto'
 import { StaffDto } from '../dtos/staff.dto'
-import { Response } from '../../commons/dtos/response.dto'
+import { Response } from 'src/commons/dtos/response.dto'
 import { LoginStaffDto } from '../dtos/login.dto'
+import { JwtAuthGuard } from '../guards/jwt.guard'
 
 @Controller('staffs')
 export class AuthController {
@@ -40,7 +53,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(200)
-  async login(@Body() loginStaffDto: LoginStaffDto): Promise < Response > {
+  async login(@Body() loginStaffDto: LoginStaffDto): Promise <Response> {
     const { email, password } = loginStaffDto
     const accessToken: string | null = await this.authService.generateAcessToken(email, password)
 
@@ -52,6 +65,22 @@ export class AuthController {
       data: {
         access_token: accessToken
       }
+    }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  @HttpCode(200)
+  async profile(@Request() request: any): Promise <Response> {
+    const { id } = request.user
+    const staff: StaffDto = await this.authService.findById(id)
+
+    if (!staff) {
+      throw new NotFoundException('Profile not found')
+    }
+
+    return {
+      data: staff
     }
   }
 }

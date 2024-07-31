@@ -1,6 +1,6 @@
 
 import { Staff, StaffDocument } from '../entities/staff.entity'
-import { Model } from 'mongoose'
+import { Model, SchemaTypes } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { RegisterStaffDto } from '../dtos/register.dto'
 import { Injectable, ConflictException } from '@nestjs/common'
@@ -12,6 +12,11 @@ export class StaffsRepository {
 
     async findByEmail(email: string): Promise<StaffDocument | null> {
         const staff = await this.staffModel.findOne({ email })
+        return staff
+    }
+
+    async findById(id: string): Promise<StaffDocument | null> {
+        const staff = await this.staffModel.findById(id)
         return staff
     }
 

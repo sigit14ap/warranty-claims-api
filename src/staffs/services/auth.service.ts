@@ -19,6 +19,11 @@ export class AuthService {
     return staff
   }
 
+  async findById(id: string): Promise<StaffDto> {
+    const staff: Staff = await this.staffsRepository.findById(id)
+    return staff
+  }
+
   async create(registerDto: RegisterStaffDto): Promise<StaffDto> {
 
     const salt: string = bcrypt.genSaltSync(10)
@@ -34,7 +39,7 @@ export class AuthService {
     if (!staff) {
       return null
     }
-    console.log('staff', staff)
+  
     const isPasswordValid: boolean = bcrypt.compareSync(password, staff.password)
 
     if (!isPasswordValid) {
@@ -54,5 +59,11 @@ export class AuthService {
     const token: string = this.jwtService.sign({ id: staff.id , email })
     
     return token
+  }
+
+  validateToken(token: string): any {
+    return this.jwtService.verify(token, {
+      secret : process.env.JWT_SECRET
+    })
   }
 }

@@ -1,5 +1,6 @@
 export interface Response {
     error?: string
-    message?: Array<any>
-    data?: object
+    messages?: Array<any>
+    data?: any
+    message?: string
 }

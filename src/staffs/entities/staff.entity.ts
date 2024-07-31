@@ -1,23 +1,23 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { SchemaTypes, Types, Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { SchemaTypes, Types, Document } from 'mongoose'
 
-export type StaffDocument = Staff & Document;
+export type StaffDocument = Staff & Document
 
-@Schema({ collection: 'staffs' })
+@Schema({ collection: 'staffs', timestamps: true })
 export class Staff {
-    id: string;
+    id: string
 
     @Prop({ type: SchemaTypes.String, required: true, unique: true })
-    email: string;
+    email: string
 
     @Prop({ type: SchemaTypes.String, required: true })
-    name: string;
+    name: string
 
     @Prop({ type: SchemaTypes.String, required: true })
-    password: string;
+    password: string
 }
 
-export const StaffSchema = SchemaFactory.createForClass(Staff);
+export const StaffSchema = SchemaFactory.createForClass(Staff)
 StaffSchema.set('toJSON', { transform: function(doc, data, options) {
     data.id = data._id
 
