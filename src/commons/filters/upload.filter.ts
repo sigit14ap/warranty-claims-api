@@ -13,7 +13,7 @@ export const storage = diskStorage({
 })
 
 export const fileFilter = (req: any, file: { mimetype: string }, cb: (arg0: Error, arg1: boolean) => void) => {
-    if (!file.mimetype.match(/\/(jpg|jpeg|png|gif)$/)) {
+    if (!file.mimetype.match(/\/(jpg|jpeg|png)$/)) {
         return cb(new Error('Only image files are allowed'), false)
     }
     cb(null, true)
