@@ -17,11 +17,17 @@ import { StaffDto } from '../../dtos/staff/staff.dto'
 import { Response } from 'src/commons/dtos/response.dto'
 import { LoginDto } from '../../dtos/login.dto'
 import { StaffAuthGuard } from '../../guards/staff.guard'
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
+import { Staff } from 'src/entities/staff.entity'
 
 @Controller('staffs')
 export class StaffAuthController {
   constructor(private readonly staffService: StaffService) {}
 
+  @ApiOperation({ summary: 'Staff Register' })
+  @ApiResponse({ status: 200, description: 'Success registered', type: Staff })
+  @ApiResponse({ status: 409, description: 'Email already registered' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
   @Post('register')
   @HttpCode(200)
   async register(@Body() registerDto: RegisterDto): Promise <Response> {
@@ -51,6 +57,9 @@ export class StaffAuthController {
     }
   }
 
+  @ApiOperation({ summary: 'Staff Login' })
+  @ApiResponse({ status: 200, description: 'Success authenticated', type: Staff })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @Post('login')
   @HttpCode(200)
   async login(@Body() loginStaffDto: LoginDto): Promise <Response> {
@@ -68,6 +77,9 @@ export class StaffAuthController {
     }
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({summary: 'Staff profile'})
+  @ApiResponse({status: 200, description: 'Success get profile', type: Staff})
   @UseGuards(StaffAuthGuard)
   @Get('profile')
   @HttpCode(200)

@@ -7,6 +7,8 @@ import { ProductService } from 'src/services/product.service'
 import { WarrantyDto } from 'src/dtos/warranty.dto'
 import { CreateWarrantyDto } from 'src/dtos/customer/warranty.dto'
 import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from 'src/commons/constants/warranty.constant'
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
+import { Warranty } from 'src/entities/warranty.entity'
 
 @UseGuards(CustomerAuthGuard)
 @Controller('customers/warranty')
@@ -17,6 +19,12 @@ export class WarrantyController {
         private readonly productService: ProductService
     ) {}
 
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Submit warranty' })
+    @ApiResponse({ status: 200, description: 'Warranty submitted', type: Warranty })
+    @ApiResponse({ status: 400, description: 'Failed to submit warranty' })
+    @ApiResponse({ status: 404, description: 'Warranty not found' })
+    @ApiResponse({ status: 500, description: 'Internal server error' })
     @Post('submit/:productId')
     @HttpCode(200)
     async submit(@Request() request, @Body() body: CreateWarrantyDto, @Param('productId') productId: string): Promise <Response> {
@@ -56,6 +64,10 @@ export class WarrantyController {
         }
     }
 
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Detail of warranty' })
+    @ApiResponse({ status: 200, description: 'Warranty detail', type: Warranty })
+    @ApiResponse({ status: 404, description: 'Warranty not found' })
     @Get('detail/:productId')
     @HttpCode(200)
     async show(@Request() request, @Param('productId') productId: string): Promise <Response> {

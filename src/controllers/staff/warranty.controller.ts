@@ -5,6 +5,8 @@ import { WarrantyDto } from 'src/dtos/warranty.dto'
 import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from 'src/commons/constants/warranty.constant'
 import { StaffAuthGuard } from 'src/guards/staff.guard'
 import { ProcessWarrantyDto } from 'src/dtos/staff/manage-warranty.dto'
+import { Warranty } from 'src/entities/warranty.entity'
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 @UseGuards(StaffAuthGuard)
 @Controller('staffs/warranties')
@@ -14,6 +16,9 @@ export class WarrantyController {
         private readonly warrantyService: WarrantyService
     ) {}
     
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Warranty Management : list' })
+    @ApiResponse({ status: 200, description: 'List of warranty', type: Warranty })
     @Get()
     @HttpCode(200)
     async index(): Promise <Response> {
@@ -24,6 +29,10 @@ export class WarrantyController {
         }
     }
 
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Warranty Management : detail warranty' })
+    @ApiResponse({ status: 200, description: 'Warranty detail', type: Warranty })
+    @ApiResponse({ status: 404, description: 'Warranty not found' })
     @Get(':warrantyId')
     @HttpCode(200)
     async show(@Param('warrantyId') warrantyId: string): Promise <Response> {
@@ -38,6 +47,11 @@ export class WarrantyController {
         }
     }
 
+    @ApiBearerAuth()
+    @ApiOperation({ summary: 'Warranty Management : update warranty' })
+    @ApiResponse({ status: 200, description: 'Warranty updated', type: Warranty })
+    @ApiResponse({ status: 404, description: 'Warranty not found' })
+    @ApiResponse({ status: 500, description: 'Internal server error' })
     @Put(':warrantyId')
     @HttpCode(200)
     async process(@Body() body: ProcessWarrantyDto, @Param('warrantyId') warrantyId: string): Promise <Response> {
