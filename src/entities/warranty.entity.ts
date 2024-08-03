@@ -18,6 +18,9 @@ export class Warranty {
     @Prop({ type: SchemaTypes.String, required: true })
     description: string
 
+    @Prop({ type: SchemaTypes.String, required: true })
+    status: string
+
     createdAt: Date
     updatedAt: Date
 }

@@ -6,6 +6,7 @@ export class WarrantyDto {
     customer: CustomerDto
     product: ProductDto
     description: string
+    status: string
     createdAt?: Date
     updatedAt?: Date
 }

@@ -3,6 +3,7 @@ import { WarrantyDto } from '../dtos/warranty.dto'
 import { WarrantyRepository } from "src/repositories/warranty.repository"
 import { CreateWarrantyDto } from "src/dtos/customer/warranty.dto"
 import { Warranty } from "src/entities/warranty.entity"
+import { ProcessWarrantyDto } from "src/dtos/staff/manage-warranty.dto"
 
 @Injectable()
 export class WarrantyService {
@@ -10,13 +11,28 @@ export class WarrantyService {
         private readonly warrantyRepository: WarrantyRepository
     ) {}
 
+    async findAll(): Promise<WarrantyDto[]> {
+        const warranties: Warranty[] = await this.warrantyRepository.findAll()
+        return warranties
+    }
+
     async create(productDto: CreateWarrantyDto): Promise<WarrantyDto> {
         const warranty: Warranty = await this.warrantyRepository.create(productDto)
         return warranty
     }
 
-    async findById(id: string): Promise <WarrantyDto> {
+    async findUserWarranty(customerId: string, productId: string): Promise <WarrantyDto> {
+        const warranty: Warranty = await this.warrantyRepository.findUserWarranty(customerId, productId)
+        return warranty
+    }
+
+    async findById(id: string): Promise <WarrantyDto | null> {
         const warranty: Warranty = await this.warrantyRepository.findById(id)
+        return warranty
+    }
+
+    async update(id: string, processWarrantyDto: ProcessWarrantyDto): Promise<WarrantyDto> {
+        const warranty: Warranty = await this.warrantyRepository.update(id, processWarrantyDto)
         return warranty
     }
 }
