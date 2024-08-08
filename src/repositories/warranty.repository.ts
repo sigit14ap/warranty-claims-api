@@ -31,7 +31,7 @@ export class WarrantyRepository {
         return warranty
     }
 
-    async update(id: string, ProcessWarrantyDto: ProcessWarrantyDto): Promise<WarrantyDocument> {
-        return this.warrantyModel.findByIdAndUpdate(id, ProcessWarrantyDto).exec()
+    async update(id: string, processWarrantyDto: ProcessWarrantyDto): Promise<WarrantyDocument> {
+        return this.warrantyModel.findByIdAndUpdate(id, processWarrantyDto).exec()
     }
 }
