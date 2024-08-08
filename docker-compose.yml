@@ -1,20 +1,26 @@
-version: '3.7'
-
+version: '3.8'
 services:
-  warranty-api:
-    image: warranty-api:latest
-    ports:
-      - "3000:3000"
   mongodb:
-    image: mongo
-    container_name: mongodb
-    restart: always
-    environment:
-      MONGO_INITDB_DATABASE: ${DB_NAME}
+    image: mongo:latest
+    env_file:
+      - .env
     ports:
-      - "27017:27017"
+      - ${DATABASE_PORT}:${DATABASE_PORT}
     volumes:
-      - mongodb_data:/data/db
+      - mongodb_data_container:/data/db
+
+  api: 
+    image: warranty-api
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    restart: on-failure
 
 volumes:
-  mongodb_data:
+  mongodb_data_container:
