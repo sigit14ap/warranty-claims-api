@@ -7,6 +7,7 @@ import { ProductRepository } from 'src/repositories/product.repository'
 import { StaffModule } from './staffs.module'
 import { ProductController as ProductCustomerController } from 'src/controllers/customer/product.controller'
 import { CustomersModule } from './customers.module'
+import { UploadService } from 'src/services/upload.service'
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { CustomersModule } from './customers.module'
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
   ],
   controllers: [ProductController, ProductCustomerController],
-  providers: [ProductService, ProductRepository],
-  exports: [ProductService, ProductRepository]
+  providers: [ProductService, ProductRepository, UploadService],
+  exports: [ProductService, ProductRepository, UploadService]
 })
 export class ProductModule {}

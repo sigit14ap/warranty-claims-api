@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "892e7bed-ecf8-4aeb-882b-5a8938bf410d",
+		"name": "[Personal] Warranty Claims Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13224906"
+	},
+	"item": [
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test product",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "test desc",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/sigit/Pictures/Screenshot 2023-10-17 164136.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/staffs/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/products/66aa1aa5eab1e62deee7bea1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"products",
+										"66aa1aa5eab1e62deee7bea1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test product 1235",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "test desc 123",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/sigit/Downloads/UCB_Algorithm_Slide.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/staffs/products/66b4c405b46ca283cdf7aca5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"products",
+										"66b4c405b46ca283cdf7aca5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/products/66b4c405b46ca283cdf7aca5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"products",
+										"66b4c405b46ca283cdf7aca5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Warranty",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/warranties",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"warranties"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/staffs/warranties/66adeb7251e3e5c0f6394f2f",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"warranties",
+										"66adeb7251e3e5c0f6394f2f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Process",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{staff_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"rejected\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/staffs/warranties/66adeb7251e3e5c0f6394f2f",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"staffs",
+										"warranties",
+										"66adeb7251e3e5c0f6394f2f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sigit@123.com\",\r\n    \"name\": \"test\",\r\n    \"password\": \"test2123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/staffs/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"staffs",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sigit@123.com\",\r\n    \"password\": \"test2123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/staffs/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"staffs",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{staff_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/staffs/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"staffs",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/customers/products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"products"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Warranty",
+					"item": [
+						{
+							"name": "Submit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/customers/warranty/submit/66ad11421112f7b9fb95458b",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"warranty",
+										"submit",
+										"66ad11421112f7b9fb95458b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/customers/warranty/detail/66ad11421112f7b9fb95458b",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"customers",
+										"warranty",
+										"detail",
+										"66ad11421112f7b9fb95458b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sigit@123.com\",\r\n    \"password\": \"test2123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sigit@123.com\",\r\n    \"name\": \"test\",\r\n    \"password\": \"test2123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "staff_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTllMjQ1OWNhYjg3MzZhMjI1OWY0NCIsImVtYWlsIjoic2lnaXRAMTIzLmNvbSIsImlhdCI6MTcyMjQxMDY3MCwiZXhwIjoxNzIyNDEwNzU2fQ.pb3LiP9w7sHyJSoRgJWX1Ydptx236yBmsGPZ_w3_Thg",
+			"type": "string"
+		},
+		{
+			"key": "customer_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YWI5MTk0OWI3MWViM2M5MjkwNzY4NyIsImVtYWlsIjoic2lnaXRAMTIzLmNvbSIsImlhdCI6MTcyMjUxOTk4OSwiZXhwIjoxNzIyNjA2Mzg5fQ.ohfegYTjSPyh0JoAKMDn7IP5KGIWJUZ5aSgGkpoXYNo",
+			"type": "string"
+		}
+	]
+}
