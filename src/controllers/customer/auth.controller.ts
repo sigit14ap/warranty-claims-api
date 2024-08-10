@@ -11,15 +11,14 @@ import {
     Request,
     NotFoundException
   } from '@nestjs/common'
-  import { CustomerService } from '../../services/customer.service'
-  import { RegisterDto } from '../../dtos/register.dto'
-  import { CustomerDto } from '../../dtos/customer/customer.dto'
-  import { Response } from 'src/commons/dtos/response.dto'
-  import { LoginDto } from '../../dtos/login.dto'
-  import { CustomerAuthGuard } from '../../guards/customer.guard'
+  import { CustomerService } from '@services/customer.service'
+  import { RegisterDto } from '@dtos/register.dto'
+  import { CustomerDto } from '@dtos/customer/customer.dto'
+  import { Response } from '@dtos/response.dto'
+  import { LoginDto } from '@dtos/login.dto'
+  import { CustomerAuthGuard } from '@guards/customer.guard'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { Staff } from 'src/entities/staff.entity'
-import { Customer } from 'src/entities/customer.entity'
+import { Customer } from '@entities/customer.entity'
   
 @Controller('customers')
 export class CustomerAuthController {

@@ -1,10 +1,10 @@
 
-import { Warranty, WarrantyDocument } from '../entities/warranty.entity'
+import { Warranty, WarrantyDocument } from '@entities/warranty.entity'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { Injectable } from '@nestjs/common'
-import { CreateWarrantyDto } from '../dtos/customer/warranty.dto'
-import { ProcessWarrantyDto } from 'src/dtos/staff/manage-warranty.dto'
+import { CreateWarrantyDto } from '@dtos/customer/warranty.dto'
+import { ProcessWarrantyDto } from '@dtos/staff/manage-warranty.dto'
 
 @Injectable()
 export class WarrantyRepository {
@@ -12,7 +12,7 @@ export class WarrantyRepository {
     constructor(@InjectModel(Warranty.name) private warrantyModel: Model <WarrantyDocument>) {}
 
     async findUserWarranty(customerId: string, productId: string): Promise<WarrantyDocument | null> {
-        const warranty = await this.warrantyModel.findOne({ customer: customerId, product: productId }).exec()
+        const warranty = await this.warrantyModel.findOne({ customer: customerId, product: productId }).sort({ createdAt:-1 }).exec()
         return warranty
     }
 

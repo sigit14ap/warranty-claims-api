@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common"
-import { WarrantyDto } from '../dtos/warranty.dto'
-import { WarrantyRepository } from "src/repositories/warranty.repository"
-import { CreateWarrantyDto } from "src/dtos/customer/warranty.dto"
-import { Warranty } from "src/entities/warranty.entity"
-import { ProcessWarrantyDto } from "src/dtos/staff/manage-warranty.dto"
+import { WarrantyDto } from '@dtos/warranty.dto'
+import { WarrantyRepository } from "@repositories/warranty.repository"
+import { CreateWarrantyDto } from "@dtos/customer/warranty.dto"
+import { Warranty } from "@entities/warranty.entity"
+import { ProcessWarrantyDto } from "@dtos/staff/manage-warranty.dto"
 
 @Injectable()
 export class WarrantyService {

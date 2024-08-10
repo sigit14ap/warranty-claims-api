@@ -1,8 +1,8 @@
 
-import { Customer, CustomerDocument } from '../entities/customer.entity'
+import { Customer, CustomerDocument } from '@entities/customer.entity'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { RegisterDto } from '../dtos/register.dto'
+import { RegisterDto } from '@dtos/register.dto'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

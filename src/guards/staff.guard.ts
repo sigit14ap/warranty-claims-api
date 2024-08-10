@@ -8,7 +8,7 @@ import {
 import {
     AuthGuard
 } from '@nestjs/passport'
-import { StaffService } from '../services/staff.service'
+import { StaffService } from '@services/staff.service'
 
 @Injectable()
 export class StaffAuthGuard extends AuthGuard('jwt') {

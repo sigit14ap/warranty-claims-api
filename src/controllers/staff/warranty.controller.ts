@@ -1,11 +1,11 @@
 import { Controller, Get, HttpCode, NotFoundException, UseGuards, InternalServerErrorException, Body, Param, Put, BadRequestException } from '@nestjs/common'
-import { Response } from 'src/commons/dtos/response.dto'
-import { WarrantyService } from 'src/services/warranty.service'
-import { WarrantyDto } from 'src/dtos/warranty.dto'
-import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from 'src/commons/constants/warranty.constant'
-import { StaffAuthGuard } from 'src/guards/staff.guard'
-import { ProcessWarrantyDto } from 'src/dtos/staff/manage-warranty.dto'
-import { Warranty } from 'src/entities/warranty.entity'
+import { Response } from '@dtos/response.dto'
+import { WarrantyService } from '@services/warranty.service'
+import { WarrantyDto } from '@dtos/warranty.dto'
+import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from '@commons/constants/warranty.constant'
+import { StaffAuthGuard } from '@guards/staff.guard'
+import { ProcessWarrantyDto } from '@dtos/staff/manage-warranty.dto'
+import { Warranty } from '@entities/warranty.entity'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
 
 @UseGuards(StaffAuthGuard)

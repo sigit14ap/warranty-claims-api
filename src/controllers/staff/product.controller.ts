@@ -1,13 +1,13 @@
 import { Controller, Get, HttpCode, NotFoundException, UseGuards, Post, UseInterceptors, UploadedFile, InternalServerErrorException, Body, Param, Put, Delete, BadRequestException } from '@nestjs/common'
-import { Response } from 'src/commons/dtos/response.dto'
-import { StaffAuthGuard } from '../../guards/staff.guard'
-import { ProductService } from '../../services/product.service'
-import { ProductDto } from 'src/dtos/product.dto'
-import { CreateProductDto, UpdateProductDto } from '../../dtos/staff/manage-product.dto'
+import { Response } from '@dtos/response.dto'
+import { StaffAuthGuard } from '@guards/staff.guard'
+import { ProductService } from '@services/product.service'
+import { ProductDto } from '@dtos/product.dto'
+import { CreateProductDto, UpdateProductDto } from '@dtos/staff/manage-product.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { Product } from 'src/entities/product.entity'
-import { UploadService } from 'src/services/upload.service'
+import { Product } from '@entities/product.entity'
+import { UploadService } from '@services/upload.service'
 
 @UseGuards(StaffAuthGuard)
 @Controller('staffs/products')

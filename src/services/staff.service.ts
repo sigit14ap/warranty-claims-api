@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { RegisterDto } from '../dtos/register.dto'
-import { StaffsRepository } from '../repositories/staffs.repository'
-import { Staff } from '../entities/staff.entity'
-import { StaffDto } from '../dtos/staff/staff.dto'
+import { RegisterDto } from '@dtos/register.dto'
+import { StaffsRepository } from '@repositories/staffs.repository'
+import { Staff } from '@entities/staff.entity'
+import { StaffDto } from '@dtos/staff/staff.dto'
 import * as bcrypt from 'bcryptjs'
 import { JwtService } from '@nestjs/jwt'
 

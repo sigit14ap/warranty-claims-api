@@ -1,10 +1,10 @@
-import { Controller, Get, HttpCode, NotFoundException, UseGuards, Request, Post, UseInterceptors, UploadedFile, InternalServerErrorException, Body, Param, Put, Delete } from '@nestjs/common'
-import { Response } from 'src/commons/dtos/response.dto'
-import { CustomerAuthGuard } from '../../guards/customer.guard'
-import { ProductService } from '../../services/product.service'
-import { ProductDto } from 'src/dtos/product.dto'
+import { Controller, Get, HttpCode, UseGuards } from '@nestjs/common'
+import { Response } from '@dtos/response.dto'
+import { CustomerAuthGuard } from '@guards/customer.guard'
+import { ProductService } from '@services/product.service'
+import { ProductDto } from '@dtos/product.dto'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { Product } from 'src/entities/product.entity'
+import { Product } from '@entities/product.entity'
 
 @UseGuards(CustomerAuthGuard)
 @Controller('customers/products')

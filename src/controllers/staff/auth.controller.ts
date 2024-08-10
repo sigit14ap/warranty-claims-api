@@ -11,14 +11,14 @@ import {
   Request,
   NotFoundException
 } from '@nestjs/common'
-import { StaffService } from '../../services/staff.service'
-import { RegisterDto } from '../../dtos/register.dto'
-import { StaffDto } from '../../dtos/staff/staff.dto'
-import { Response } from 'src/commons/dtos/response.dto'
-import { LoginDto } from '../../dtos/login.dto'
-import { StaffAuthGuard } from '../../guards/staff.guard'
+import { StaffService } from '@services/staff.service'
+import { RegisterDto } from '@dtos/register.dto'
+import { StaffDto } from '@dtos/staff/staff.dto'
+import { Response } from '@dtos/response.dto'
+import { LoginDto } from '@dtos/login.dto'
+import { StaffAuthGuard } from '@guards/staff.guard'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { Staff } from 'src/entities/staff.entity'
+import { Staff } from '@entities/staff.entity'
 
 @Controller('staffs')
 export class StaffAuthController {

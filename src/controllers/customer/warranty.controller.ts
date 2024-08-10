@@ -1,14 +1,26 @@
-import { Controller, Get, HttpCode, NotFoundException, UseGuards, Request, Post, InternalServerErrorException, Body, Param, BadRequestException } from '@nestjs/common'
-import { Response } from 'src/commons/dtos/response.dto'
-import { CustomerAuthGuard } from '../../guards/customer.guard'
-import { ProductDto } from 'src/dtos/product.dto'
-import { WarrantyService } from 'src/services/warranty.service'
-import { ProductService } from 'src/services/product.service'
-import { WarrantyDto } from 'src/dtos/warranty.dto'
-import { CreateWarrantyDto } from 'src/dtos/customer/warranty.dto'
-import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from 'src/commons/constants/warranty.constant'
+import {
+    Controller,
+    Get,
+    HttpCode,
+    NotFoundException,
+    UseGuards,
+    Request,
+    Post,
+    InternalServerErrorException,
+    Body,
+    Param,
+    BadRequestException
+} from '@nestjs/common'
+import { Response } from '@dtos/response.dto'
+import { CustomerAuthGuard } from '@guards/customer.guard'
+import { ProductDto } from '@dtos/product.dto'
+import { WarrantyService } from '@services/warranty.service'
+import { ProductService } from '@services/product.service'
+import { WarrantyDto } from '@dtos/warranty.dto'
+import { CreateWarrantyDto } from '@dtos/customer/warranty.dto'
+import { WARRANTY_STATUS_PENDING, WARRANTY_STATUS_REJECTED } from '@commons/constants/warranty.constant'
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { Warranty } from 'src/entities/warranty.entity'
+import { Warranty } from '@entities/warranty.entity'
 
 @UseGuards(CustomerAuthGuard)
 @Controller('customers/warranty')
